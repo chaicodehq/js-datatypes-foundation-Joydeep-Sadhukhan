@@ -47,20 +47,46 @@
  */
 export function repeatPattern(pattern, times) {
   // Your code here
+  if(typeof pattern !== "string" || !Number.isInteger(times) || times <= 0 ) return ""
+
+  if(times > 0)
+    return pattern.repeat(times);
+
 }
 
 export function extractRangoliCenter(design, start, end) {
   // Your code here
+  if( typeof design !== "string" || !Number.isInteger(start) || !Number.isInteger(end) ) return ""
+  
+  if(start >= 0 && end >= 0)
+    return design.slice(start, end);
+
 }
 
 export function splitAndJoinRangoli(colorString, oldSep, newSep) {
   // Your code here
+  if(typeof colorString !== "string") return ""
+
+  // "".split(",").join("|")
+  return colorString.split(oldSep).join(newSep);
+  
 }
 
 export function replaceRangoliColor(design, oldColor, newColor) {
   // Your code here
+  if(typeof design !== "string" || typeof oldColor !== "string" || typeof newColor !== "string") return ""
+
+  return design.replaceAll(oldColor, newColor);
 }
 
 export function makeRangoliBorder(char, length) {
   // Your code here
+  if(typeof char !== "string" || !Number.isInteger(length) || length <= 0 ) return ""
+
+  //Math.floor(3.5) = 3 
+  //Math.ceil(3.5)= 4
+  // Example: if length = 7, char ="=-" repeat-count 7/2 = 4(if we use Math.ceil)
+  const calculateRepeatCount = Math.ceil(length / char.length);
+
+  return char.repeat(calculateRepeatCount).slice(0, length);
 }
